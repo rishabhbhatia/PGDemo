@@ -1,4 +1,60 @@
-/* Empty. Add your own CSS if you like */
+.login-bg {
+	background: url('http://cdn.wallpaper.com/main/casa-en-el-pacifico_01.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	display: table;
+  	width: 100%;
+  	background-color: gray;
+}
+
+.login-input {
+ 	width: 70%;
+ 	margin: 2% auto;
+ 	text-align: left;
+ 	padding: 0% 5%;
+ 	border: 0px;
+ 	text-align: center;
+	border-radius: 5px;
+}
+
+ .login-input-holder {
+ 	display: table-cell;
+  	text-align: center;
+  	vertical-align: middle;
+}
+
+.login-sign-in-button {
+	width: 70%;
+	background-color: green;
+	color: white;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 15px;
+	margin-top: 10%;
+}
+
+.login-logo {
+	width: auto;
+	height: 30%;
+	margin: 15% auto;
+}
+
+.login-footer-holder {
+	margin: 15% auto;
+}
+
+.login-new-user-label {
+	font-size: 14px;
+	color: white;
+	width: 100%;
+}
+
+.login-forgot-password-label {
+	font-size: 14px;
+ 	color: white;
+ 	width: 100%;
+}
 
 .center {
     margin-left: auto;
