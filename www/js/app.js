@@ -58,7 +58,8 @@ angular.module('starter', ['ionic'])
       url: '/profile',
       views: {
         'profile-tab': {
-          templateUrl: 'templates/profile.html'
+          templateUrl: 'templates/profile.html',
+          controller: 'ProfileController'
         }
       }
     })
@@ -97,6 +98,17 @@ angular.module('starter', ['ionic'])
 
       $http.get("js/data.json").success(function(data) {
         $scope.messages = data;
+
+    });
+
+}])
+
+.controller("ProfileController", [ "$scope" , "$http", "$state" ,
+  function($scope, $http, $state) {
+
+      $http.get("js/data.json").success(function(data) {
+        $scope.user = data[0];
+        console.log("hello to: "+$scope.user.name);
 
     });
 

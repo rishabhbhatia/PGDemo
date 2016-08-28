@@ -1,13 +1,38 @@
 /* Empty. Add your own CSS if you like */
 
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
 .tab_selected {
 	color: red;
 }
 
-.padding-home-content {
+.home-content {
 	padding: 0% 3%;
 }
 
-.padding-messages-content {
+.messages-content {
 	padding: 0% 3%;
+}
+
+.profile-content {
+	padding: 0% 3%;
+}
+
+.profile-avatar {
+	margin: 15% 0;
+}
+
+.profile-photo {
+	max-height: 25%;
+	max-width: 25%;
+}
+
+.profile_heading_name {
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px;
 }
