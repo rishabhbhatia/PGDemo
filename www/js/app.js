@@ -48,7 +48,8 @@ angular.module('starter', ['ionic'])
       url: '/messages',
       views: {
         'messages-tab': {
-          templateUrl: 'templates/messages.html'
+          templateUrl: 'templates/messages.html',
+          controller: 'MessagesController'
         }
       }
     })
@@ -86,6 +87,16 @@ angular.module('starter', ['ionic'])
       $scope.notGoingToEvent = function(eventIndex) {
       console.log("I'm not going to event at: "+eventIndex);
       };
+
+    });
+
+}])
+
+.controller("MessagesController", [ "$scope" , "$http", "$state" ,
+  function($scope, $http, $state) {
+
+      $http.get("js/data.json").success(function(data) {
+        $scope.messages = data;
 
     });
 
