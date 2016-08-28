@@ -14,10 +14,10 @@
 	  </div>
 
 	  <div class="button-bar">
-		  <a class="button button-icon icon ion-heart"></a>
-		  <a class="button button-icon icon ion-chatbubble-working"></a>
-		  <a class="button button-icon icon ion-android-people"></a>
-		  <a class="button button-icon icon ion-close-round"></a>
+		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
+		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnEvent($index)"></a>
+		  <a class="button button-icon icon ion-android-people" ng-click="showPeopleGoingToEvent($index)"></a>
+		  <a class="button button-icon icon ion-close-round" ng-click="notGoingToEvent($index)"></a>
 	  </div>
 
 	</div>

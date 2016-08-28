@@ -70,6 +70,23 @@ angular.module('starter', ['ionic'])
 
       $http.get("js/data.json").success(function(data) {
         $scope.parties = data;
+
+      $scope.goingToEvent = function(eventIndex) {
+      console.log("I'm going to event at: "+eventIndex);
+      };
+
+      $scope.commentOnEvent = function(eventIndex) {
+      console.log("I want to comment on event at: "+eventIndex);
+      };
+
+      $scope.showPeopleGoingToEvent = function(eventIndex) {
+      console.log("Show me people going to event at: "+eventIndex);
+      };
+
+      $scope.notGoingToEvent = function(eventIndex) {
+      console.log("I'm not going to event at: "+eventIndex);
+      };
+
     });
-      
+
 }])
