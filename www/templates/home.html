@@ -1,17 +1,21 @@
 <ion-view hide-nav-bar="true"> 
-	<ion-content class="padding">
+	<ion-content class="padding-home-content">
 
     <div class="list card" ng-repeat="item in parties">
 
-	  <div class="item item-avatar">
-	    <img src="http://placehold.it/100x100">
+	<div class="item item-avatar">
+	    <img src=img/{{item.shortname}}_tn.jpg>
 	    <h2>Pretty Hate Machine</h2>
 	    <p>Nine Inch Nails</p>
-	  </div>
+	</div>
 
-	  <div class="item item-image">
-	    <img src="http://placehold.it/600x300">
-	  </div>
+ 	<div class="item item-body">
+		<div class="item item-image">
+	    	<img src="http://placehold.it/600x300">
+	    <p class="padding-bottom">{{item.bio | limitTo: 100}}
+	       {{item.bio.length > 100 ? '&hellip;' : ''}}
+	    </p>
+    </div>
 
 	  <div class="button-bar">
 		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
