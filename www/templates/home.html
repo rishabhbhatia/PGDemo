@@ -1,5 +1,15 @@
 <ion-view hide-nav-bar="true"> 
 	<ion-content class="padding">
 		<h2>Home Page</h2>
+
+		<swipe-cards>
+
+		  <swipe-card ng-repeat="card in cards" on-destroy="
+		  	cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+		    Card content here
+		  </swipe-card>
+
+		</swipe-cards>
+
 	</ion-content>
 </ion-view>

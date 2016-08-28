@@ -38,7 +38,8 @@ angular.module('starter', ['ionic'])
       url: '/home',
       views: {
         'home-tab': {
-          templateUrl: 'templates/home.html'
+          templateUrl: 'templates/home.html',
+          controller: 'PartyController'
         }
       }
     })
@@ -63,3 +64,8 @@ angular.module('starter', ['ionic'])
 
     $urlRouterProvider.otherwise('/tab/home');
 })
+
+.controller("PartyController", [ "$scope" , "$http", "$state" ,
+  function($scope, $http, $state) {
+
+}])
