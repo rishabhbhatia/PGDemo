@@ -68,4 +68,8 @@ angular.module('starter', ['ionic'])
 .controller("PartyController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
+      $http.get("js/data.json").success(function(data) {
+        $scope.parties = data;
+    });
+      
 }])

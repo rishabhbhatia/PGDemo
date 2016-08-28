@@ -1,15 +1,26 @@
 <ion-view hide-nav-bar="true"> 
 	<ion-content class="padding">
-		<h2>Home Page</h2>
 
-		<swipe-cards>
+    <div class="list card" ng-repeat="item in parties">
 
-		  <swipe-card ng-repeat="card in cards" on-destroy="
-		  	cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
-		    Card content here
-		  </swipe-card>
+	  <div class="item item-avatar">
+	    <img src="http://placehold.it/100x100">
+	    <h2>Pretty Hate Machine</h2>
+	    <p>Nine Inch Nails</p>
+	  </div>
 
-		</swipe-cards>
+	  <div class="item item-image">
+	    <img src="http://placehold.it/600x300">
+	  </div>
+
+	  <div class="button-bar">
+		  <a class="button button-icon icon ion-heart"></a>
+		  <a class="button button-icon icon ion-chatbubble-working"></a>
+		  <a class="button button-icon icon ion-android-people"></a>
+		  <a class="button button-icon icon ion-close-round"></a>
+	  </div>
+
+	</div>
 
 	</ion-content>
 </ion-view>
