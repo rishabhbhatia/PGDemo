@@ -116,7 +116,8 @@ app.value('currentUser',{})
 
 })
 
-.controller("SignupController", function($scope, $http, $state, $ionicPopup) {
+.controller("SignupController", function($scope, $http, $state,
+ $ionicPopup, SignupService) {
 
   $scope.signupdata = {};
 
@@ -132,15 +133,22 @@ app.value('currentUser',{})
       return;
     }
 
-    console.log("name: "+$scope.signupdata.name);      
-    // console.log("lname: "+$scope.signupdata.lname);      
-    console.log("email: "+$scope.signupdata.email);
+    SignupService.signupUser($scope.signupdata.name, $scope.signupdata.email).
+    success(function(data) {
+
     currentUser = {
       name: $scope.signupdata.name,
       email: $scope.signupdata.email
     }
 
     $state.go('tabs.home');
+
+    }).error(function(data) {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Signup failed!',
+            template: 'Please check your credentials!'
+        });
+      });
 
   }
 })
@@ -203,6 +211,30 @@ app.value('currentUser',{})
                 deferred.resolve('Welcome ' + name + '!');
             } else {
                 deferred.reject('Wrong credentials.');
+            }
+            promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+        }
+    }
+})
+
+.service('SignupService', function($q) {
+    return {
+        signupUser: function(name, email) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+ 
+            if (name !== undefined && email !== undefined) {
+                deferred.resolve('Welcome ' + name + '!');
+            } else {
+                deferred.reject('Missing credentials.');
             }
             promise.success = function(fn) {
                 promise.then(fn);
