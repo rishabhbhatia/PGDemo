@@ -1,4 +1,7 @@
-angular.module('starter', ['ionic'])
+var app = angular.module('starter', ['ionic'])
+
+app.value('currentUser',{})
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -90,31 +93,56 @@ angular.module('starter', ['ionic'])
 
       LoginService.loginUser($scope.data.username, $scope.data.password).
       success(function(data) {
-            $state.go('tabs.home');
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
-                template: 'Please check your credentials!'
-            });
+
+      currentUser = {
+        username: $scope.data.username
+      }
+
+      $state.go('tabs.home');
+
+      }).error(function(data) {
+          var alertPopup = $ionicPopup.alert({
+              title: 'Login failed!',
+              template: 'Please check your credentials!'
+          });
         });
 
       }
 
       $scope.signup = function() {
         $state.go("signup");
-        console.log("Will u sign me up asshole");
       }
 
 
 })
 
-.controller("SignupController", function($scope, $http, $state) {
+.controller("SignupController", function($scope, $http, $state, $ionicPopup) {
+
+  $scope.signupdata = {};
 
   $scope.signup = function() {
-        $state.go("signup");
-        console.log("Will u sign me up asshole");
-      }
 
+    if($scope.signupdata.name === undefined || 
+      $scope.signupdata.name === undefined) 
+    {
+        var alertPopup = $ionicPopup.alert({
+                title: 'Missing input',
+                template: 'Please complete the form!'
+            });
+      return;
+    }
+
+    console.log("name: "+$scope.signupdata.name);      
+    // console.log("lname: "+$scope.signupdata.lname);      
+    console.log("email: "+$scope.signupdata.email);
+    currentUser = {
+      name: $scope.signupdata.name,
+      email: $scope.signupdata.email
+    }
+
+    $state.go('tabs.home');
+
+  }
 })
 
 
@@ -171,7 +199,7 @@ angular.module('starter', ['ionic'])
             var deferred = $q.defer();
             var promise = deferred.promise;
  
-            if (name === 'user' && pw === 'pass') {
+            if (name === 'rishabh' && pw === 'pass') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
                 deferred.reject('Wrong credentials.');

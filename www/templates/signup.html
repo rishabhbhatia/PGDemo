@@ -1,17 +1,21 @@
 <ion-view>
-	<div class="list has-header">
+	<div class="list has-header padding">
 	  <label class="item item-input item-stacked-label">
-	    <span class="input-label">First Name</span>
-	    <input type="text" placeholder="Rishabh">
+	    <span class="input-label required">Name</span>
+	    <input type="text" placeholder="Rishabh Bhatia" ng-model="signupdata.name">
 	  </label>
-	  <label class="item item-input item-stacked-label">
+	  <!-- <label class="item item-input item-stacked-label">
 	    <span class="input-label">Last Name</span>
-	    <input type="text" placeholder="Bhatia">
-	  </label>
+	    <input type="text" placeholder="Bhatia" ng-model="signupdata.lname">
+	  </label> -->
 	  <label class="item item-input item-stacked-label">
-	    <span class="input-label">Email</span>
-	    <input type="text" placeholder="rishabh@example.com">
+	    <span class="input-label required">Email</span>
+	    <input type="text" placeholder="rishabh@example.com" ng-model="signupdata.email">
 	  </label>
+
+	  <button class="button button-block button-positive" ng-click="signup()">
+	   Sign Up
+	  </button>
 	</div>
 
 </ion-view>
