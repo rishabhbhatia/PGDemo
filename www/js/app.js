@@ -33,6 +33,13 @@ app.value('currentUser',{})
         controller: 'SignupController'
     })
 
+     $stateProvider
+    .state('resetPassword', {
+        url: '/resetPassword',
+        templateUrl: 'templates/resetpassword.html',
+        controller: 'ResetPasswordController'
+    })
+
     $stateProvider
     .state('tabs', {
         url: '/tab',
@@ -113,6 +120,9 @@ app.value('currentUser',{})
         $state.go("signup");
       }
 
+       $scope.resetPassword = function() {
+        $state.go("resetPassword");
+      }
 
 })
 
@@ -147,6 +157,42 @@ app.value('currentUser',{})
         var alertPopup = $ionicPopup.alert({
             title: 'Signup failed!',
             template: 'Please check your credentials!'
+        });
+      });
+
+  }
+})
+
+.controller("ResetPasswordController", function($scope, $http, $state,
+ $ionicPopup, ResetPasswordService) {
+
+  $scope.resetpassworddata = {};
+
+  $scope.resetPassword = function() {
+
+    if($scope.resetpassworddata.username === undefined && 
+      $scope.resetpassworddata.email === undefined) 
+    {
+        var alertPopup = $ionicPopup.alert({
+                title: 'Wrong input',
+                template: 'Please fill one field!'
+            });
+      return;
+    }
+
+    ResetPasswordService.resetPassword($scope.resetpassworddata.username,
+    $scope.resetpassworddata.email).
+    success(function(data) {
+
+    var alertPopup = $ionicPopup.alert({
+                title: 'Success',
+                template: 'Check your inbox for new password'
+            });
+
+    }).error(function(data) {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Request failed!',
+            template: 'Please check your input!'
         });
       });
 
@@ -235,6 +281,30 @@ app.value('currentUser',{})
                 deferred.resolve('Welcome ' + name + '!');
             } else {
                 deferred.reject('Missing credentials.');
+            }
+            promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+        }
+    }
+})
+
+.service('ResetPasswordService', function($q) {
+    return {
+        resetPassword: function(username, email) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+ 
+            if (username !== undefined || email !== undefined) {
+                deferred.resolve('Request Sent ' + username + '!');
+            } else {
+                deferred.reject('Missing input.');
             }
             promise.success = function(fn) {
                 promise.then(fn);
