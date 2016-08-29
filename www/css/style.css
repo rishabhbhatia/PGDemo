@@ -44,16 +44,20 @@
 	margin: 15% auto;
 }
 
-.login-new-user-label {
-	font-size: 14px;
+.login-new-user {
+	font-size: 15px;
 	color: white;
 	width: 100%;
+	text-decoration: none !important;
+	font-style: bold;
 }
 
-.login-forgot-password-label {
-	font-size: 14px;
+.login-forgot-password {
+	font-size: 15px;
  	color: white;
  	width: 100%;
+ 	text-decoration: none !important;
+ 	font-style: bold;
 }
 
 .center {
