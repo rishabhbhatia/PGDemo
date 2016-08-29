@@ -24,6 +24,13 @@ angular.module('starter', ['ionic'])
     })
 
     $stateProvider
+    .state('signup', {
+        url: '/signup',
+        templateUrl: 'templates/signup.html',
+        controller: 'SignupController'
+    })
+
+    $stateProvider
     .state('tabs', {
         url: '/tab',
         abstract: true,
@@ -91,6 +98,21 @@ angular.module('starter', ['ionic'])
             });
         });
 
+      }
+
+      $scope.signup = function() {
+        $state.go("signup");
+        console.log("Will u sign me up asshole");
+      }
+
+
+})
+
+.controller("SignupController", function($scope, $http, $state) {
+
+  $scope.signup = function() {
+        $state.go("signup");
+        console.log("Will u sign me up asshole");
       }
 
 })
