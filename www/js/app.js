@@ -64,7 +64,8 @@ angular.module('starter', ['ionic'])
     $urlRouterProvider.otherwise('/login');
 })
 
-.controller("LoginController", function($scope, $http, $state, $ionicPopup) {
+.controller("LoginController", function($scope, $http, $state,
+ $ionicPopup, LoginService) {
   $scope.data = {};
 
   $scope.login = function() {
@@ -80,15 +81,15 @@ angular.module('starter', ['ionic'])
   console.log("Please log me in. I'm "+$scope.data.username+
     " & my password is: "+$scope.data.password);
 
-    /*  LoginService.loginUser($scope.data.username, $scope.data.password).
+      LoginService.loginUser($scope.data.username, $scope.data.password).
       success(function(data) {
-            $state.go('tab.dash');
+            $state.go('tabs.home');
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
                 template: 'Please check your credentials!'
             });
-        });*/
+        });
 
       }
 
@@ -141,3 +142,27 @@ angular.module('starter', ['ionic'])
     });
 
 }])
+
+.service('LoginService', function($q) {
+    return {
+        loginUser: function(name, pw) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+ 
+            if (name === 'user' && pw === 'pass') {
+                deferred.resolve('Welcome ' + name + '!');
+            } else {
+                deferred.reject('Wrong credentials.');
+            }
+            promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+        }
+    }
+})
