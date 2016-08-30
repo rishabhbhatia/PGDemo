@@ -77,8 +77,8 @@ app.value('currentUser',{})
       }
     })
 
-    // $urlRouterProvider.otherwise('/tab/home');
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/tab/home');
+    // $urlRouterProvider.otherwise('/login');
 })
 
 .controller("LoginController", function($scope, $http, $state,

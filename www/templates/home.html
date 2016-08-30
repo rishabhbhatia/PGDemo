@@ -9,19 +9,20 @@
 	    <p>{{item.description}}</p>
 	</div>
 
- 	<div class="item item-body">
+ 	<div class="item item-body image-relative">
 		<div class="item item-image home-event-cover-photo">
 	    	<img src={{item.cover_image}} alt="{{item.name}} Photo">
-	    <p class="padding-bottom">{{item.bio | limitTo: 100}}
+	    	<h4 class="text-absolute">₹{{$index+100}} - ₹199</h4>
+	    <!-- <p class="padding-bottom">{{item.bio | limitTo: 100}}
 	       {{item.bio.length > 100 ? '&hellip;' : ''}}
-	    </p>
+	    </p> -->
     </div>
 
 	  <div class="button-bar">
 		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
 		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnEvent($index)"></a>
 		  <a class="button button-icon icon ion-android-people" ng-click="showPeopleGoingToEvent($index)"></a>
-		  <a class="button button-icon icon ion-close-round" ng-click="notGoingToEvent($index)"></a>
+		  <!-- <a class="button button-icon icon ion-close-round" ng-click="notGoingToEvent($index)"></a> -->
 	  </div>
 
 	</div>
