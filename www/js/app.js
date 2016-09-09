@@ -77,6 +77,13 @@ app.value('currentUser',{})
       }
     })
 
+     $stateProvider
+    .state('socialize', {
+        url: '/socialize',
+        templateUrl: 'templates/socialize.html',
+        controller: 'SocializeController'
+    })
+
     $urlRouterProvider.otherwise('/tab/home');
     // $urlRouterProvider.otherwise('/login');
 })
@@ -203,8 +210,10 @@ app.value('currentUser',{})
 .controller("PartyController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
-      $http.get("js/data.json").success(function(data) {
+      // $http.get("js/data.json").success(function(data) {
+      $http.get("http://localhost:3000/dictionary-api").success(function(data) {
         $scope.parties = data;
+        console.log("hello to: "+data.length);
 
       $scope.goingToEvent = function(eventIndex) {
       console.log("I'm going to event at: "+eventIndex);
@@ -229,7 +238,7 @@ app.value('currentUser',{})
 .controller("MessagesController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
-      $http.get("js/data.json").success(function(data) {
+      $http.get("http://localhost:3000/dictionary-api").success(function(data) {
         $scope.messages = data;
 
     });
@@ -239,9 +248,28 @@ app.value('currentUser',{})
 .controller("ProfileController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
-      $http.get("js/data.json").success(function(data) {
+      $http.get("http://localhost:3000/dictionary-api").success(function(data) {
         $scope.user = data[0];
         console.log("hello to: "+$scope.user.name);
+
+        $scope.socialize = function(){
+          $state.go("socialize");
+        };
+
+    });
+
+}])
+
+.controller("SocializeController", [ "$scope" , "$http", "$state" ,
+  function($scope, $http, $state) {
+
+      $http.get("http://localhost:3000/dictionary-api").success(function(data) {
+        $scope.user = data[0];
+        console.log("hello to: "+$scope.user.name);
+
+        $scope.socialize = function(){
+          $state.go("socialize");
+        };
 
     });
 

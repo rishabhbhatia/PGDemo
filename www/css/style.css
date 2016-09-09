@@ -105,6 +105,10 @@
 	padding: 0px 0px;
 }
 
+.socialize-content {
+	padding: 0% 3%;
+}
+
 .center {
     margin-left: auto;
     margin-right: auto;
@@ -129,3 +133,4 @@
    color: black;
    background-color: rgba(255, 255, 255, 0.7);
 }
+
